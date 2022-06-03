@@ -1,0 +1,4 @@
+project: PROJECT
+target: fuzz_compression_sav
+cmds:
+- cmd: /out/fuzz_compression_sav
