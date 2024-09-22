@@ -123,6 +123,9 @@
     <ClCompile Include="..\src\spss\readstat_sav_parse_timestamp.c">
       <Filter>Source Files\spss</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\spss\readstat_sav_parse_mr_name.c">
+      <Filter>Source Files\spss</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\spss\readstat_sav_read.c">
       <Filter>Source Files\spss</Filter>
     </ClCompile>
@@ -216,6 +219,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\spss\readstat_sav_parse_timestamp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\spss\readstat_sav_parse_mr_name.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\spss\readstat_spss.h">

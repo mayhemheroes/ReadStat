@@ -33,6 +33,7 @@ libreadstat_la_SOURCES = \
 	src/spss/readstat_sav_compress.c \
 	src/spss/readstat_sav_parse.c \
 	src/spss/readstat_sav_parse_timestamp.c \
+	src/spss/readstat_sav_parse_mr_name.c \
 	src/spss/readstat_sav_read.c \
 	src/spss/readstat_sav_write.c \
 	src/spss/readstat_spss.c \
@@ -103,6 +104,7 @@ noinst_HEADERS = \
        src/spss/readstat_sav_compress.h \
        src/spss/readstat_sav_parse.h \
        src/spss/readstat_sav_parse_timestamp.h \
+       src/spss/readstat_sav_parse_mr_name.h \
        src/spss/readstat_spss.h \
        src/spss/readstat_spss_parse.h \
        src/spss/readstat_zsav_compress.h \

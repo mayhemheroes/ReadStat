@@ -215,6 +215,7 @@
     <ClCompile Include="..\src\spss\readstat_sav_compress.c" />
     <ClCompile Include="..\src\spss\readstat_sav_parse.c" />
     <ClCompile Include="..\src\spss\readstat_sav_parse_timestamp.c" />
+    <ClCompile Include="..\src\spss\readstat_sav_parse_mr_name.c" />
     <ClCompile Include="..\src\spss\readstat_sav_read.c" />
     <ClCompile Include="..\src\spss\readstat_sav_write.c" />
     <ClCompile Include="..\src\spss\readstat_spss.c" />
@@ -251,6 +252,7 @@
     <ClInclude Include="..\src\spss\readstat_sav_compress.h" />
     <ClInclude Include="..\src\spss\readstat_sav_parse.h" />
     <ClInclude Include="..\src\spss\readstat_sav_parse_timestamp.h" />
+    <ClInclude Include="..\src\spss\readstat_sav_parse_mr_name.h" />
     <ClInclude Include="..\src\spss\readstat_spss.h" />
     <ClInclude Include="..\src\spss\readstat_spss_parse.h" />
     <ClInclude Include="..\src\spss\readstat_zsav_compress.h" />
