@@ -46,6 +46,7 @@ static void produce_column_header(struct csv_metadata *c, void *s, size_t len) {
 
     extract_metadata_format_t colformat = column_format(c->json_md, column);
     c->is_date[c->columns] = colformat == EXTRACT_METADATA_FORMAT_DATE;
+    c->is_date_time[c->columns] = colformat == EXTRACT_METADATA_FORMAT_DATE_TIME;
     if (c->output_module->header) {
         c->output_module->header(c, column, var);
     }
@@ -75,6 +76,7 @@ static void csv_metadata_cell(void *s, size_t len, void *data)
     if (c->rows == 0) {
         c->variables = realloc(c->variables, (c->columns+1) * sizeof(readstat_variable_t));
         c->is_date = realloc(c->is_date, (c->columns+1) * sizeof(int));
+        c->is_date_time = realloc(c->is_date_time, (c->columns+1) * sizeof(int));
         produce_column_header(c, s, len);
     } else if (c->rows >= 1 && c->handle.value && c->output_module->csv_value) {
         c->output_module->csv_value(c, s, len);
@@ -183,6 +185,10 @@ cleanup:
     if (md->is_date) {
         free(md->is_date);
         md->is_date = NULL;
+    }
+    if (md->is_date_time) {
+        free(md->is_date_time);
+        md->is_date_time = NULL;
     }
     csv_free(p);
     io->close(io->io_ctx);
