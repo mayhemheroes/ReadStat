@@ -107,7 +107,12 @@ static readstat_error_t sas7bcat_parse_value_labels(const char *value_start, siz
                 sas_assign_tag(&value, (val >> 40));
             } else {
                 memcpy(&dval, &val, 8);
-                dval *= -1.0;
+                if (dval > 0.0) {
+                    val = ~val;
+                    memcpy(&dval, &val, 8);
+                } else {
+                    dval *= -1.0;
+                }
             }
 
             value.v.double_value = dval;
