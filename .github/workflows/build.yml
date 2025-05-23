@@ -31,10 +31,10 @@ jobs:
         compiler: [ clang, gcc ]
     steps:
       - name: Install packages
-        run: brew install automake libtool gettext
+        run: brew install automake libtool
       - uses: actions/checkout@v2
       - name: Autoconf
-        run: autoreconf -i -f
+        run: autoreconf -i -f -I $(brew --prefix)/share/gettext/m4
       - name: Configure
         run: ./configure
         env:
