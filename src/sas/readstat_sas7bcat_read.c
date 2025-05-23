@@ -118,9 +118,14 @@ static readstat_error_t sas7bcat_parse_value_labels(const char *value_start, siz
             value.v.double_value = dval;
         }
         size_t label_len = sas_read2(&lbp2[8], ctx->bswap);
-        if (&lbp2[10] + label_len - value_start > value_labels_len) {
+        if (&lbp2[10] > value_start + value_labels_len) {
             retval = READSTAT_ERROR_PARSE;
             goto cleanup;
+        }
+        /* Some labels seem to overflow the reported block length, truncate it */
+        /* (Observed with formats.sasbcat from GSS2021, produced with 9.0401M6X64_SR12R2 */
+        if (label_len > value_start + value_labels_len - &lbp2[10]) {
+            label_len = value_start + value_labels_len - &lbp2[10];
         }
         if (ctx->value_label_handler) {
             label = realloc(label, 4 * label_len + 1);
