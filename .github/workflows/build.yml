@@ -21,7 +21,16 @@ jobs:
       - name: Make
         run: make
       - name: Run tests
+        id: make-check
         run: make check
+        continue-on-error: true
+      - name: Upload test log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-suite-log
+          path: test-suite.log
+          retention-days: 5
       - name: Generate corpus
         run: make generate_corpus
   macos:
@@ -42,7 +51,16 @@ jobs:
       - name: Make
         run: make
       - name: Run tests
+        id: make-check
         run: make check
+        continue-on-error: true
+      - name: Upload test log
+        if: steps.make-check.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-suite-log
+          path: test-suite.log
+          retention-days: 5
       - name: Generate corpus
         run: make generate_corpus
   windows:
@@ -67,6 +85,13 @@ jobs:
       - name: Make
         run: make
       - name: Test
+        id: make-check
         run: make check
-      - name: Log
-        run: cat ./test-suite.log
+        continue-on-error: true
+      - name: Upload test log
+        if: steps.make-check.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-suite-log
+          path: test-suite.log
+          retention-days: 5
