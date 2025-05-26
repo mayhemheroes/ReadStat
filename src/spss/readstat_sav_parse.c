@@ -411,13 +411,13 @@ _match:
                 // been set when this record is processed. So just set the longname to every
                 // matching variable, ghost or real.
                 varlookup_t *iter_match = found;
-                while (strcmp(iter_match->name, temp_key) == 0 && iter_match >= table) {
+                while (iter_match >= table && strcmp(iter_match->name, temp_key) == 0) {
                     spss_varinfo_t *info = ctx->varinfo[iter_match->index];
                     snprintf(info->longname, sizeof(info->longname), "%*s", (int)str_len, temp_val);
                     iter_match--;
                 }
                 iter_match = found + 1;
-                while (strcmp(iter_match->name, temp_key) == 0 && iter_match - table < var_count) {
+                while (iter_match - table < var_count && strcmp(iter_match->name, temp_key) == 0) {
                     spss_varinfo_t *info = ctx->varinfo[iter_match->index];
                     snprintf(info->longname, sizeof(info->longname), "%*s", (int)str_len, temp_val);
                     iter_match++;
@@ -471,13 +471,13 @@ _again:
                 // been set when this record is processed. So just set the longname to every
                 // matching variable, ghost or real.
                 varlookup_t *iter_match = found;
-                while (strcmp(iter_match->name, temp_key) == 0 && iter_match >= table) {
+                while (iter_match >= table && strcmp(iter_match->name, temp_key) == 0) {
                     spss_varinfo_t *info = ctx->varinfo[iter_match->index];
                     snprintf(info->longname, sizeof(info->longname), "%*s", (int)str_len, temp_val);
                     iter_match--;
                 }
                 iter_match = found + 1;
-                while (strcmp(iter_match->name, temp_key) == 0 && iter_match - table < var_count) {
+                while (iter_match - table < var_count && strcmp(iter_match->name, temp_key) == 0) {
                     spss_varinfo_t *info = ctx->varinfo[iter_match->index];
                     snprintf(info->longname, sizeof(info->longname), "%*s", (int)str_len, temp_val);
                     iter_match++;
